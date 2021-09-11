@@ -32,8 +32,8 @@ def hello_world():
     return "Welcome"
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80)
-    # app.run(debug=True)
+    # app.run(host='0.0.0.0', port=80)
+    app.run(debug=True)
 
 # file = open('sbc.txt', 'r')
 # This will print every line one by one in the file
