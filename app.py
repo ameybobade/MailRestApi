@@ -1,8 +1,9 @@
-from flask import Flask 
+from flask import Flask,jsonify 
 from flask_restful import Resource, Api, request, reqparse, abort      
 import smtplib
 from email.message import EmailMessage
 from datetime import datetime
+import time
 
 app = Flask(__name__)
 
@@ -29,11 +30,15 @@ def hello_world():
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login("hackathonviit@gmail.com", "viithackathon")             
         smtp.send_message(msg)
-    return "Welcome"
+    result={
+        "Status" : "Sent",
+        "Time" : time.asctime( time.localtime(time.time()) )
+    }
+    return jsonify(result)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80)
-    # app.run(debug=True)
+    # app.run(host='0.0.0.0', port=80)
+    app.run(debug=True)
 
 # file = open('sbc.txt', 'r')
 # This will print every line one by one in the file
