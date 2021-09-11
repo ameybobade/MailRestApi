@@ -30,7 +30,7 @@ def hello_world():
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login("hackathonviit@gmail.com", "viithackathon")             
         smtp.send_message(msg)
-    return "welcome "+name
+    return "Welcome"
 
 if __name__ == "__main__":
     app.run(debug=True)
