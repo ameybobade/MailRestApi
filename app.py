@@ -1,8 +1,7 @@
-from flask import Flask,request
+from flask import Flask 
+from flask_restful import Resource, Api, request, reqparse, abort      
 import smtplib
-import imghdr
 from email.message import EmailMessage
-import requests
 from datetime import datetime
 
 app = Flask(__name__)
