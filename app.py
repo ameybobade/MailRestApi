@@ -31,14 +31,20 @@ def hello_world():
     #     print(file_name)
         
     #     msg.add_attachment(file_data, maintype='application', subtype='octet-stream', filename=file_name)
-
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-        smtp.login("hackathonviit@gmail.com", "viithackathon")             
-        smtp.send_message(msg)
-    result={
-        "Status" : "Sent",
-        "Time" : time.asctime( time.localtime(time.time()) )
-    }
+    try:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+            smtp.login("hackathonviit@gmail.com", "viithackathon")             
+            smtp.send_message(msg)
+        result={
+            "Status" : "Sent",
+            "Time" : time.asctime( time.localtime(time.time()) )
+        }
+        
+    except:
+        result={
+            "Status" : "Error in Authentication",
+            "Time" : time.asctime( time.localtime(time.time()) )
+        }
     return jsonify(result)
 
 if __name__ == "__main__":
