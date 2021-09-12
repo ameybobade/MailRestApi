@@ -6,10 +6,15 @@ from datetime import datetime
 import time
 
 app = Flask(__name__)
+@app.route("/",methods=["GET"])
+def home():
+    str="<h1>Welcome!! this is a mailing Rest Api</h1>" + "<h2>Format of post method : - <p>https://mailhelp.herokuapp.com/?emailid=\"To whom you want to send the mail\"&cc=\"To whom you want to add in cc field (',' seperated n no. of email ids can be used)\"&bcc\"To whom you want to add in bcc field (',' seperated n no. of email ids can be used)\"&subject=\"Subject of the mail\"&message=\"Body of mail\"</p></h2><br><h2>Json format : - <br>{<br>'emailid':\"To whom you want to send the mail\",<br> 'cc':\"To whom you want to add in cc field (',' seperated n no. of email ids can be used)\",<br> 'bcc':\"To whom you want to add in bcc field (',' seperated n no. of email ids can be used)\",<br> 'subject':\"Subject of the mail\"&message=\"Body of mail\",<br>'message':\"Body of mail\"<br>}<br></h2>"
+    return str
+
+
 
 @app.route("/",methods=["GET", "POST"])
 def hello_world():
-    name ="amey"
     msg = EmailMessage()
     msg['Subject']=str(request.args.get('subject'))
     msg['From']="hackathonviit@gmail.com"
