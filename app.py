@@ -33,7 +33,7 @@ def hello_world():
     #     msg.add_attachment(file_data, maintype='application', subtype='octet-stream', filename=file_name)
     try:
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-            smtp.login("hackathonviit@gmail.com", "viithackathon")             
+            smtp.login("emailid", "password")             
             smtp.send_message(msg)
         result={
             "Status" : "Sent",
